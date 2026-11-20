@@ -1,0 +1,22 @@
+{
+  "name": "Standard Martina – Sistema Bridge",
+  "short_name": "Standard Martina",
+  "description": "Guida interattiva al sistema licitativo Standard Martina (2♦ e 2♣ Kokish).",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f6f5",
+  "theme_color": "#1b4332",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

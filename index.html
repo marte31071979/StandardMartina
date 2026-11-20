@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1b4332" />
+  <link rel="icon" href="icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png" />
+  <title>Standard Martina – Sistema Licitativo Bridge</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button id="menuToggle" aria-label="Apri menu">☰</button>
+    <h1><span>♠</span> Standard <span class="suit-red-header">♥</span><span class="suit-red-header">♦</span> Martina <span>♣</span></h1>
+    <span id="progressIndicator" class="progress-badge">1 / 17</span>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <span>Indice Sistema</span>
+        <button id="menuClose" aria-label="Chiudi menu">✕</button>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#intro" data-goto="0" class="nav-link active">1. Introduzione</a></li>
+          <li class="nav-group">
+            <button class="accordion-btn">2. Quadri (2<span class="suit-red">♦</span>) ▾</button>
+            <ul class="submenu">
+              <li><a href="#2d-regole" data-goto="1" class="nav-link">2.1 Regole e Risposte</a></li>
+              <li><a href="#2d-sviluppi" data-goto="2" class="nav-link">2.2 Sviluppi e Interventi</a></li>
+              <li><a href="#2d-esempi" data-goto="3" class="nav-link">2.3 Esempi Pratici (Mani 1-5)</a></li>
+              <li><a href="#2d-esercizi" data-goto="4" class="nav-link">2.4 Esercizi e Soluzioni</a></li>
+            </ul>
+          </li>
+          <li class="nav-group">
+            <button class="accordion-btn">3. Fiori (2♣) ▾</button>
+            <ul class="submenu">
+              <li><a href="#2c-panoramica" data-goto="5" class="nav-link">3.1 Panoramica</a></li>
+              <li><a href="#2c-apertura" data-goto="6" class="nav-link">3.2 L'apertura di 2♣</a></li>
+              <li><a href="#2c-controlli" data-goto="7" class="nav-link">3.3 I mezzi controlli</a></li>
+              <li><a href="#2c-risposte" data-goto="8" class="nav-link">3.4 Le risposte al 2♣</a></li>
+              <li><a href="#2c-dopo2d" data-goto="9" class="nav-link">3.5 Risposte dopo 2<span class="suit-red">♦</span></a></li>
+              <li><a href="#2c-kokish" data-goto="10" class="nav-link">3.6 La Kokish 2<span class="suit-red">♥</span></a></li>
+              <li><a href="#2c-dopo2h" data-goto="11" class="nav-link">3.7 Risposte dopo 2♣-2<span class="suit-red">♥</span></a></li>
+              <li><a href="#2c-dopo2s" data-goto="12" class="nav-link">3.8 Risposte dopo 2♣-2♠</a></li>
+              <li><a href="#2c-positiva" data-goto="13" class="nav-link">3.9 Dopo risposta positiva</a></li>
+              <li><a href="#2c-esempi" data-goto="14" class="nav-link">3.10 Esempi guidati</a></li>
+              <li><a href="#2c-esercizi" data-goto="15" class="nav-link">3.11 Esercizi pratici</a></li>
+              <li><a href="#2c-riepilogo" data-goto="16" class="nav-link">3.12 Riepilogo & Errori</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="content" class="content">
+      <section id="intro" class="chapter card active" data-index="0" data-title="1. Introduzione">
+
+      <h2>1. Introduzione</h2>
+      <p>Benvenuti nella guida interattiva al sistema licitativo <strong>Standard Martina</strong>.</p>
+	  <ul>
+	  
+<li><strong>Quinta nobile e minore terzo</strong> con 4-4 nei minori si apre 1♦</li>
+<li><strong>Apertura Forte 2♣</strong>: 22+ bilanciata o meno di 4 perdenti sbilanciata (minimo 16 PO) con risposte a mezzi controlli</li>
+<li><strong>Apertura 2♦</strong> semi FG con una sesta qualsiasi e 4-4 perdenti e mezzo</li>
+<li><strong>Apertura 1SA</strong> 15-17 senza quinte nobili con STAYMAN forzante</li>
+<li><strong>Apertura 2SA</strong>  20-21 con sviluppo Puppet Stayman</li>
+<li><strong>sottoaperture 2♥/2♠</strong> (costruttive se primo e secondo di mano) stile RONF e 2SA interrogativa con ripetizione seme apertura debole</li>
+<li><strong>Aperture livello 3 Barrage</strong> 3SA Gambling con un minore ottavo chiuso</li>
+<li><strong>Apertura 4♥/4♠</strong> barrage senza 2 Assi</li>
+<li><strong>Apertura 4♣/4♦</strong> idem negli stessi nobili (♣ per ♥ e♦ per ♠) con almeno 2 Assi</li>
+<li><strong>Apertura 4SA</strong> barrage con almeno 6/5 nei minori</li>
+<li><strong>Apertura 5♣/5♦</strong> Barrage</li>
+	  
+	  </ul>
+      <p>Il sistema si articola su due aperture forti artificiali complementari:</p>
+      <ul>
+        <li><strong>Apertura 2<span class="suit-red">♦</span>:</strong> Mani semi-forcing game con almeno <strong>14 PO</strong> e un colore sesto (o più lungo) qualsiasi, con eventuale quarta minore a lato. Capitano: <em>il Rispondente</em>.</li>
+        <li><strong>Apertura 2♣:</strong> Mani fortissime forcing game (<strong>22+ PO</strong> oppure <strong>9+ prese</strong> con meno di 4 perdenti e almeno 16 PO), basate sulle risposte a <strong>mezzi controlli</strong> e sulla convenzione <strong>Kokish (2<span class="suit-red">♥</span>)</strong>. Capitano: <em>l'Apertore</em>.</li>
+      </ul>
+      <p>Usa il menu laterale o i pulsanti <strong>Precedente</strong> e <strong>Successivo</strong> in basso per sfogliare i capitoli.</p>
+    
+</section><section id="2d-regole" class="chapter card" data-index="1" data-title="2.1 Regole e Risposte (2♦)">
+
+      <h2>2.1 Apertura 2<span class="suit-red">♦</span> – Regole e Risposte</h2>
+      <span class="badge">Capitano: Il Rispondente</span>
+      <h3>Requisiti dell'Apertura</h3>
+      <ul>
+        <li><strong>Distribuzione:</strong> 6+ carte in un seme qualsiasi; possibile possesso anche di una quarta minore a lato.</li>
+        <li><strong>Forza:</strong> Semi-forcing game con punteggio minimo di <strong>14 PO</strong>.</li>
+      </ul>
+      <h3>Risposte all'Apertura 2<span class="suit-red">♦</span></h3>
+      <ul>
+        <li><strong>2<span class="suit-red">♥</span>:</strong> Relay (qualsiasi mano diversa dalle altre risposte codificate).</li>
+        <li><strong>2♠:</strong> 5+ carte di picche.</li>
+        <li><strong>2SA:</strong> 5+ carte di cuori.</li>
+        <li><strong>3♣ / 3<span class="suit-red">♦</span> / 3<span class="suit-red">♥</span> / 3♠:</strong> Colore chiuso o semichiuso tipo <strong>AKQJxx</strong> oppure <strong>AKQxxxx</strong>.</li>
+      </ul>
+    
+</section><section id="2d-sviluppi" class="chapter card" data-index="2" data-title="2.2 Sviluppi e Interventi (2♦)">
+
+      <h2>2.2 Apertura 2<span class="suit-red">♦</span> – Sviluppi e Interventi</h2>
+      <h3>Sviluppi della Licita</h3>
+      <ul>
+        <li><strong>Forzante a livello 3:</strong> È forzante un turno qualsiasi licita che supera il seme dell'apertore a livello 3. <em>Esempio:</em> se il rispondente dichiara prima 2♠, l'apertore non avendo 3 carte a ♠ ripete il proprio colore 6° e il rispondente ripete ulteriormente le ♠, tale licita è forzante.</li>
+        <li><strong>Dopo il 2<span class="suit-red">♥</span> relay:</strong> L'apertore dichiara la propria sesta; se possiede le cuori dichiara <strong>2SA</strong> (seme del relay).</li>
+        <li><strong>Dopo risposta 2♠ (5+♠) o 2SA (5+<span class="suit-red">♥</span>):</strong> L'<strong>apertore</strong> con 3 carte deve dare fit; altrimenti dichiara il proprio seme sesto.</li>
+      </ul>
+      <h3>In caso di Intervento Avversario</h3>
+      <h4>Intervento di "Contro" (X)</h4>
+      <ul>
+        <li><strong>Passo:</strong> Indica assenza di quinte nobili (in attesa di conoscere il seme dell'apertore).</li>
+        <li><strong>2<span class="suit-red">♥</span> / 2♠:</strong> Naturale, 5+ carte.</li>
+        <li><strong>Surcontro (XX):</strong> Senza quinte nobili con buon punteggio.</li>
+      </ul>
+      <h4>Intervento a Colore</h4>
+      <ul>
+        <li><strong>Passo:</strong> Dichiarazione di attesa.</li>
+        <li><strong>Contro (X):</strong> Punitivo.</li>
+        <li><strong>Dichiarazione a SA:</strong> Con fermo e punteggio invitante o da manche.</li>
+      </ul>
+    
+</section><section id="2d-esempi" class="chapter card" data-index="3" data-title="2.3 Esempi Pratici (Mani 1-5)">
+
+      <h2>2.3 Esempi Pratici (Mani 1 – 5)</h2>
+
+      <article class="hand-box">
+        <h3>Mano 1 – Risposta d'attesa e manche a senza</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ 9 7 5 2<br><span class="suit-red">♥</span> Q 8 6 3<br><span class="suit-red">♦</span> J 4<br>♣ K 9 7</div>
+          <div class="seat west"><strong>OVEST</strong><br>♠ Q 6 3<br><span class="suit-red">♥</span> 7 4 2<br><span class="suit-red">♦</span> 3 2<br>♣ Q J 10 8 6</div>
+          <div class="seat center">MANO 1<br><small>Mazziere: Sud</small></div>
+          <div class="seat east"><strong>EST</strong><br>♠ J 10 8<br><span class="suit-red">♥</span> K J 10 9<br><span class="suit-red">♦</span> 9 7 5<br>♣ A 4 2</div>
+          <div class="seat south"><strong>SUD</strong><br>♠ A K 4<br><span class="suit-red">♥</span> A 5<br><span class="suit-red">♦</span> A K Q 10 8 6<br>♣ 5 3</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2<span class="suit-red">♦</span> – Nord 2<span class="suit-red">♥</span> – Sud 3<span class="suit-red">♦</span> – Nord 3NT (Passo). <strong>Contratto finale: 3NT giocato da Nord.</strong></p>
+        <ul>
+          <li><strong>Sud (20 PO, 3-2-6-2):</strong> Sei quadri con A-K-Q, A-K di picche e A di cuori. Nove prese di testa: apre 2<span class="suit-red">♦</span>.</li>
+          <li><strong>Nord (6 PO):</strong> Risponde 2<span class="suit-red">♥</span> di attesa e sul 3<span class="suit-red">♦</span> di Sud chiude a 3NT con Q-8-6-3 a cuori.</li>
+        </ul>
+      </article>
+
+      <article class="hand-box">
+        <h3>Mano 2 – Colore quinto di Nord e manche a picche</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ Q 10 8 6 3<br><span class="suit-red">♥</span> 7 6<br><span class="suit-red">♦</span> K J 3<br>♣ Q 9 2</div>
+          <div class="seat west"><strong>OVEST</strong><br>♠ 5 2<br><span class="suit-red">♥</span> Q 5 2<br><span class="suit-red">♦</span> 10 9 5 2<br>♣ J 10 7 6</div>
+          <div class="seat center">MANO 2<br><small>Mazziere: Sud</small></div>
+          <div class="seat east"><strong>EST</strong><br>♠ A 9 7<br><span class="suit-red">♥</span> 10 7<br><span class="suit-red">♦</span> Q 8 7 4<br>♣ A 8 4 3</div>
+          <div class="seat south"><strong>SUD</strong><br>♠ K J 4<br><span class="suit-red">♥</span> A K J 9 8 3<br><span class="suit-red">♦</span> A 6<br>♣ K 5</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2<span class="suit-red">♦</span> – Nord 2♠ – Sud 3♠ – Nord 4♠ (Passo). <strong>Contratto finale: 4♠ giocato da Nord.</strong></p>
+        <ul>
+          <li><strong>Sud (19 PO, 3-2-6-2):</strong> Apre 2<span class="suit-red">♦</span> e su 2♠ (5+♠ di Nord, 8 PO) appoggia a 3♠ forzante.</li>
+          <li><strong>Nord:</strong> Non vede copertura di almeno 3 perdenti per lo slam e chiude a 4♠.</li>
+        </ul>
+      </article>
+
+      <article class="hand-box">
+        <h3>Mano 3 – Cuori quinto di Nord e manche a cuori</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ 8 3<br><span class="suit-red">♥</span> A Q 10 7 5<br><span class="suit-red">♦</span> 7 4<br>♣ 10 7 6 2</div>
+          <div class="seat west"><strong>OVEST</strong><br>♠ 9 6 4 2<br><span class="suit-red">♥</span> 6 2<br><span class="suit-red">♦</span> 5 2<br>♣ Q J 9 4 3</div>
+          <div class="seat center">MANO 3<br><small>Mazziere: Sud</small></div>
+          <div class="seat east"><strong>EST</strong><br>♠ Q J 10 7<br><span class="suit-red">♥</span> J 9 3<br><span class="suit-red">♦</span> J 10 9<br>♣ A 8 5</div>
+          <div class="seat south"><strong>SUD</strong><br>♠ A K 5<br><span class="suit-red">♥</span> K 8 4<br><span class="suit-red">♦</span> A K Q 8 6 3<br>♣ K</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2<span class="suit-red">♦</span> – Nord 2SA – Sud 3<span class="suit-red">♥</span> – Nord 4<span class="suit-red">♥</span> (Passo). <strong>Contratto finale: 4<span class="suit-red">♥</span> giocato da Sud.</strong></p>
+        <ul>
+          <li><strong>Nord (6 PO):</strong> Risponde 2SA mostrando 5+ carte a <span class="suit-red">♥</span>.</li>
+          <li><strong>Sud (22 PO, 3-3-6-1):</strong> Dà fit 5-3 con 3<span class="suit-red">♥</span> e Nord rialza a 4<span class="suit-red">♥</span> (il singolo di ♣ al morto permette un taglio).</li>
+        </ul>
+      </article>
+
+      <article class="hand-box">
+        <h3>Mano 4 – Appoggio positivo, Blackwood e grande slam</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ A K 8 4<br><span class="suit-red">♥</span> J 10 3<br><span class="suit-red">♦</span> Q 7 5<br>♣ K 5 4</div>
+          <div class="seat west"><strong>OVEST</strong><br>♠ 7 6 3 2<br><span class="suit-red">♥</span> 6 2<br><span class="suit-red">♦</span> 9 5 2<br>♣ Q J 10 3</div>
+          <div class="seat center">MANO 4<br><small>Mazziere: Sud</small></div>
+          <div class="seat east"><strong>EST</strong><br>♠ Q J 10 9<br><span class="suit-red">♥</span> 8 5<br><span class="suit-red">♦</span> J 10 8 6<br>♣ 9 8 7</div>
+          <div class="seat south"><strong>SUD</strong><br>♠ 5<br><span class="suit-red">♥</span> A K Q 9 7 4<br><span class="suit-red">♦</span> A K 3<br>♣ A 6 2</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2<span class="suit-red">♦</span> – Nord 2<span class="suit-red">♥</span> – Sud 2NT – Nord 3♠ – Sud 4♣ – Nord 4NT – Sud 5♣ – Nord 5<span class="suit-red">♦</span> – Sud 6<span class="suit-red">♦</span> – Nord 7<span class="suit-red">♥</span>. <strong>Contratto: 7<span class="suit-red">♥</span> da Sud.</strong></p>
+        <ul>
+          <li><strong>Sviluppo:</strong> Sud (20 PO, 1-6-3-3) mostra le cuori con 2NT; Nord (13 PO) fa cue-bid 3♠, Sud 4♣.</li>
+          <li><strong>RKCB:</strong> 4NT chiede le carte chiave; 5♣ = 4 Key Cards; 5<span class="suit-red">♦</span> chiede Q<span class="suit-red">♥</span>/Re; 6<span class="suit-red">♦</span> = Q<span class="suit-red">♥</span> + K<span class="suit-red">♦</span>. Nord chiama 7<span class="suit-red">♥</span> (13 prese di testa).</li>
+        </ul>
+      </article>
+
+      <article class="hand-box">
+        <h3>Mano 5 – Appoggio debole e manche a picche</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ J 7 4<br><span class="suit-red">♥</span> 8 7 4<br><span class="suit-red">♦</span> 9 3 2<br>♣ K 9 6 5</div>
+          <div class="seat west"><strong>OVEST</strong><br>♠ Q 5 2<br><span class="suit-red">♥</span> J 3 2<br><span class="suit-red">♦</span> 6 5<br>♣ Q J 10 8 2</div>
+          <div class="seat center">MANO 5<br><small>Mazziere: Sud</small></div>
+          <div class="seat east"><strong>EST</strong><br>♠ 6<br><span class="suit-red">♥</span> A Q 10 9 6<br><span class="suit-red">♦</span> K J 10 8 7<br>♣ 4 3</div>
+          <div class="seat south"><strong>SUD</strong><br>♠ A K 10 9 8 3<br><span class="suit-red">♥</span> K 5<br><span class="suit-red">♦</span> A Q 4<br>♣ A 7</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2<span class="suit-red">♦</span> – Nord 2<span class="suit-red">♥</span> – Sud 2♠ – Nord 4♠ (Passo). <strong>Contratto finale: 4♠ giocato da Sud.</strong></p>
+        <ul>
+          <li><strong>Nord (4 PO):</strong> Risponde 2<span class="suit-red">♥</span> di attesa e sul 2♠ di Sud chiude a 4♠ (appoggio debole senza interesse di slam).</li>
+        </ul>
+      </article>
+    
+</section><section id="2d-esercizi" class="chapter card" data-index="4" data-title="2.4 Esercizi e Soluzioni (2♦)">
+
+      <h2>2.4 Esercizi – Aprite 2<span class="suit-red">♦</span> ?</h2>
+      <p>Siete <strong>Sud</strong> e siete mazzieri. Per ciascuna mano decidete se aprire <strong>2<span class="suit-red">♦</span></strong> oppure no.</p>
+      <div class="quiz-item">
+          <div class="ex-card">
+            <div class="hand-title">Esercizio 1</div>
+            <span class="suit-b">♠</span> K 5<br>
+            <span class="suit-red">♥</span> 8 4<br>
+            <span class="suit-red">♦</span> A Q 10 9 7 3<br>
+            <span class="suit-b">♣</span> K J 6
+          </div>
+        <button class="toggle-sol">Mostra / Nascondi Soluzione</button>
+        <p class="solution hidden"><strong>No, si apre 1<span class="suit-red">♦</span>.</strong> 13 PO e solo nove prese scarse: è una mano da apertura normale con sesta di quadri.</p>
+      </div>
+      <div class="quiz-item">
+         <div class="ex-card">
+            <div class="hand-title">Esercizio 2</div>
+            <span class="suit-b">♠</span> A K 5<br>
+            <span class="suit-red">♥</span> A 6<br>
+            <span class="suit-red">♦</span> 9 4<br>
+            <span class="suit-b">♣</span> A K Q J 8 7
+          </div>
+        <button class="toggle-sol">Mostra / Nascondi Soluzione</button>
+        <p class="solution hidden"><strong>Sì, 2<span class="suit-red">♦</span>.</strong> 21 PO con sei fiori solide (A-K-Q-J) e A-K di picche, A di cuori.</p>
+      </div>
+      <div class="quiz-item">
+          <div class="ex-card">
+            <div class="hand-title">Esercizio 3</div>
+            <span class="suit-b">♠</span> A K Q 8 5 3<br>
+            <span class="suit-red">♥</span> K Q 4<br>
+            <span class="suit-red">♦</span> 3<br>
+            <span class="suit-b">♣</span> A 8 5
+          </div>
+        <button class="toggle-sol">Mostra / Nascondi Soluzione</button>
+        <p class="solution hidden"><strong>Sì, 2<span class="suit-red">♦</span>.</strong> 19 PO monocolore (6-3-3-1).</p>
+      </div>
+      <div class="quiz-item">
+          <div class="ex-card">
+            <div class="hand-title">Esercizio 4</div>
+            <span class="suit-b">♠</span> 7<br>
+            <span class="suit-red">♥</span> A K 6<br>
+            <span class="suit-red">♦</span> A K 10 9 8 6 5<br>
+            <span class="suit-b">♣</span> A 3
+          </div>
+        <button class="toggle-sol">Mostra / Nascondi Soluzione</button>
+        <p class="solution hidden"><strong>Sì, 2<span class="suit-red">♦</span>.</strong> 18 PO con settima di quadri A-K-xxxxx con tre Assi e un Re: semi-forcing a manche.</p>
+      </div>
+    
+</section><section id="2c-panoramica" class="chapter card" data-index="5" data-title="3.1 Panoramica (2♣)">
+
+      <h2>3.1 Apertura 2♣ – Panoramica</h2>
+      <span class="badge">Capitano: L'Apertore</span>
+      <p>Questo sistema gestisce le mani fortissime: l'apertura di <strong>2♣</strong> forte, la risposta del compagno a <strong>mezzi controlli</strong>, e la convenzione <strong>Kokish</strong> (rialzo di 2<span class="suit-red">♥</span> dell'apertore) per distinguere le mani bilanciate molto forti dalle mani di cuori.</p>
+      <h3>Lo scheletro dell'apertura</h3>
+      <ul>
+        <li><strong>2♣:</strong> Apertura artificiale, mano fortissima (<strong>22+ PO</strong> oppure <strong>9+ prese</strong> con meno di 4 perdenti, ma almeno 16 PO).</li>
+        <li><strong>2<span class="suit-red">♦</span>:</strong> Risposta negativa: <strong>0-1 mezzi controlli</strong> (Asso = 2, Re = 1).</li>
+        <li><strong>2<span class="suit-red">♥</span> (Kokish):</strong> Cuori naturali oppure bilanciata di <strong>25+ PO</strong>; il compagno deve dire <strong>2♠</strong>.</li>
+      </ul>
+    
+</section><section id="2c-apertura" class="chapter card" data-index="6" data-title="3.2 L'apertura di 2♣">
+
+      <h2>3.2 L'apertura di 2♣</h2>
+      <p>2♣ è un'apertura artificiale e forte: <strong>non promette fiori</strong>. Comunica al compagno che la mano garantisce quasi sempre la manche e permette di licitare con calma senza il rischio che la licita muoia presto.</p>
+      <table>
+        <thead>
+          <tr><th>Tipo di mano</th><th>Forza</th><th>Nota</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Bilanciata</strong></td><td>22+ PO</td><td>Si descrive al secondo giro: 22-24 → 2NT; 25+ → Kokish (2<span class="suit-red">♥</span>).</td></tr>
+          <tr><td><strong>Monocolore</strong></td><td>Meno di 4 perdenti</td><td>Colore lungo (6-7 carte) e solido, con poche perdenti rapide.</td></tr>
+          <tr><td><strong>Bicolore forte</strong></td><td>Meno di 4 perdenti</td><td>Di norma 5-5 o 6-4.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Regola di licita:</strong> L'apertura 2♣ è forzante per un giro. L'unica sequenza che può fermarsi sotto manche è <strong>2♣ – 2<span class="suit-red">♦</span> – 2NT</strong> (22-24 bilanciata): con 0-1 mezzi controlli e nessun punto il compagno può passare. In tutte le altre sequenze si arriva almeno a manche.</p>
+    
+</section><section id="2c-controlli" class="chapter card" data-index="7" data-title="3.3 I mezzi controlli">
+
+      <h2>3.3 I mezzi controlli</h2>
+      <p>Il controllo è la capacità di impedire all'avversario di incassare subito le sue prese in un colore. Nel mazzo ci sono 4 Assi (8) e 4 Re (4): in totale <strong>12 mezzi controlli</strong>.</p>
+      <table>
+        <thead>
+          <tr><th>Carta</th><th>Mezzi controlli</th><th>Significato</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Asso</strong></td><td><strong>2</strong></td><td>Controllo di primo giro (nessuna presa avversaria al primo giro).</td></tr>
+          <tr><td><strong>Re</strong></td><td><strong>1</strong></td><td>Controllo di secondo giro (non deve essere singolo).</td></tr>
+          <tr><td><strong>Dama, Fante, cartine</strong></td><td><strong>0</strong></td><td>Hanno valore in punti onori ma non controllano il colore.</td></tr>
+        </tbody>
+      </table>
+      <h3>Come si contano: esempi</h3>
+      <table>
+        <thead>
+          <tr><th>Mano</th><th>Mezzi controlli</th><th>Conteggio</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>♠ A K 5 <span class="suit-red">♥</span> Q 7 4 <span class="suit-red">♦</span> K 8 3 ♣ J 9 6 2</td><td><strong>4</strong></td><td>A♠ (2) + K♠ (1) + K<span class="suit-red">♦</span> (1)</td></tr>
+          <tr><td>♠ Q J 9 8 <span class="suit-red">♥</span> A 6 <span class="suit-red">♦</span> K 10 7 5 ♣ 8 3 2</td><td><strong>3</strong></td><td>A<span class="suit-red">♥</span> (2) + K<span class="suit-red">♦</span> (1)</td></tr>
+          <tr><td>♠ K 9 <span class="suit-red">♥</span> K 7 4 <span class="suit-red">♦</span> K 8 6 ♣ K 9 7 3 2</td><td><strong>4</strong></td><td>Quattro Re (1+1+1+1)</td></tr>
+          <tr><td>♠ Q 10 8 7 3 <span class="suit-red">♥</span> J 9 5 <span class="suit-red">♦</span> Q 6 ♣ 9 7 4</td><td><strong>0</strong></td><td>Nessun Asso né Re</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Attenzione:</strong> I mezzi controlli non sono punti onori! Una mano con Dame e Fanti (8 PO) ha <strong>0 mezzi controlli</strong> e risponde 2<span class="suit-red">♦</span>; una mano con soli 4 PO può avere un Asso e rispondere in modo positivo.</p>
+    
+</section><section id="2c-risposte" class="chapter card" data-index="8" data-title="3.4 Le risposte al 2♣">
+
+      <h2>3.4 Le risposte al 2♣</h2>
+      <p>La risposta indica solo il numero di mezzi controlli, non il colore. È un linguaggio artificiale per stabilire subito se lo slam è realistico.</p>
+      <table>
+        <thead>
+          <tr><th>Risposta</th><th>Mezzi controlli</th><th>Combinazioni tipiche</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>2<span class="suit-red">♦</span></strong></td><td><strong>0 - 1</strong></td><td>Nessun controllo, oppure un solo Re (risposta negativa).</td></tr>
+          <tr><td><strong>2<span class="suit-red">♥</span></strong></td><td><strong>2</strong></td><td>Un Asso, oppure due Re.</td></tr>
+          <tr><td><strong>2♠</strong></td><td><strong>3</strong></td><td>Asso + Re, oppure tre Re.</td></tr>
+          <tr><td><strong>2NT</strong></td><td><strong>4</strong></td><td>Due Assi, oppure Asso + due Re.</td></tr>
+          <tr><td><strong>3♣</strong></td><td><strong>5</strong></td><td>Due Assi + Re.</td></tr>
+          <tr><td><strong>3<span class="suit-red">♦</span></strong></td><td><strong>6 o più</strong></td><td>Mano straordinaria: slam quasi certo.</td></tr>
+          <tr><td><strong>3<span class="suit-red">♥</span></strong></td><td><strong>da 1 a 3</strong></td><td>6° di cuori con 2 onori maggiori e nient'altro.</td></tr>
+          <tr><td><strong>3♠</strong></td><td><strong>da 1 a 3</strong></td><td>6° di picche con 2 onori maggiori e nient'altro.</td></tr>
+        </tbody>
+      </table>
+      <h3>Cosa cambia per l'apertore</h3>
+      <ul>
+        <li><strong>Dopo 2<span class="suit-red">♦</span> (0-1 controlli):</strong> Lo slam è improbabile. L'apertore sceglie come arrivare a manche (entra in gioco la Kokish).</li>
+        <li><strong>Dopo una risposta positiva (2<span class="suit-red">♥</span>, 2♠, 2NT...):</strong> Si apre la ricerca dello slam con colori naturali, cue-bid e RKCB.</li>
+      </ul>
+    
+</section><section id="2c-dopo2d" class="chapter card" data-index="9" data-title="3.5 Risposte dell'apertore dopo 2♦">
+
+      <h2>3.5 Risposte dell'apertore dopo 2<span class="suit-red">♦</span></h2>
+      <p>Dopo la risposta negativa 2<span class="suit-red">♦</span>, il <strong>2<span class="suit-red">♥</span></strong> dell'apertore è riservato alla Kokish.</p>
+      <table>
+        <thead>
+          <tr><th>Rialzo</th><th>Significato</th><th>Forzante?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>2NT</strong></td><td>Bilanciata 22-24 PO</td><td><strong>No:</strong> il compagno passa con 0 punti, rialza con 2-3+ punti.</td></tr>
+          <tr><td><strong>2<span class="suit-red">♥</span></strong></td><td><strong>Kokish:</strong> cuori naturali, oppure bilanciata 25+</td><td><strong>Sì:</strong> il compagno deve dire 2♠.</td></tr>
+          <tr><td><strong>2♠</strong></td><td>5+ picche, mano forte</td><td>Sì, fino a manche.</td></tr>
+          <tr><td><strong>3♣</strong></td><td>5+ fiori, mono o bicolore</td><td>Sì, fino a manche.</td></tr>
+          <tr><td><strong>3<span class="suit-red">♦</span></strong></td><td>5+ quadri, senza quarte nobili</td><td>Sì, fino a manche.</td></tr>
+          <tr><td><strong>3<span class="suit-red">♥</span></strong></td><td>5+ quadri e 4 <span class="suit-red">♥</span></td><td>Sì, fino a manche.</td></tr>
+          <tr><td><strong>3♠</strong></td><td>5+ quadri e 4 ♠</td><td>Sì, fino a manche.</td></tr>
+        </tbody>
+      </table>
+      <h3>Sviluppi del rispondente e interferenze</h3>
+      <ul>
+        <li><strong>Senza quinta dichiarabile:</strong> Il rispondente effettua relay col primo gradino (entro il livello 3).</li>
+        <li><strong>Con quinta dichiarabile:</strong> Dichiara entro il livello 3 il proprio seme 5°+; 3SA indica il seme del relay (es. dopo 3<span class="suit-red">♦</span> dell'apertore, 3SA mostra 5+<span class="suit-red">♥</span>).</li>
+        <li><strong>Secondo negativo (3♣):</strong> Con 0-1 PO e senza fit, indica assenza assoluta di aiuto.</li>
+        <li><strong>Intervento avversario entro livello 2:</strong> Passo = 0 mezzi controlli, 1° gradino = 1 mezzo controllo e così via.</li>
+        <li><strong>Intervento a livello 3:</strong> Il rispondente propone un colore con almeno 2 mezzi controlli, altrimenti passa. Contro = punitivo o bilanciata con 2+ controlli.</li>
+        <li><strong>Intervento di Contro:</strong> Surcontro = punitivo bilanciato, Passo = 0 controlli, 2<span class="suit-red">♦</span> = 1 controllo, ecc.</li>
+        <li><strong>Richiesta Assi:</strong> Dopo apertura 2♣, il 4SA dell'apertore è richiesta di Assi e il successivo 5SA è richiesta di Dame.</li>
+      </ul>
+    
+</section><section id="2c-kokish" class="chapter card" data-index="10" data-title="3.6 La Kokish (2♥)">
+
+      <h2>3.6 La Kokish (2<span class="suit-red">♥</span>)</h2>
+      <p>La Kokish permette di mostrare sia una bilanciata molto forte (<strong>25+ PO</strong>) sia una mano forte di cuori senza bruciare spazio licitativo.</p>
+      <p><strong>Il meccanismo:</strong> Su 2♣ – 2<span class="suit-red">♦</span>, l'apertore dichiara <strong>2<span class="suit-red">♥</span></strong>. Il compagno deve rispondere <strong>2♠</strong> (<strong>relay obbligatorio</strong>) con qualsiasi mano. Solo dopo l'apertore chiarisce il proprio gioco.</p>
+      <h3>Dopo 2♣ – 2<span class="suit-red">♦</span> – 2<span class="suit-red">♥</span> – 2♠</h3>
+      <table>
+        <thead>
+          <tr><th>Apertore</th><th>Significato</th><th>Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>2NT</strong></td><td>Bilanciata 25-27 PO</td><td><strong>Forzante a manche.</strong> Seguono transfer o Puppet Stayman.</td></tr>
+          <tr><td><strong>3♣ / 3<span class="suit-red">♦</span></strong></td><td>5 Cuori e 4+ nel minore</td><td>Il primo colore (cuori) è già noto.</td></tr>
+          <tr><td><strong>3<span class="suit-red">♥</span></strong></td><td>6+ Cuori</td><td>Forzante; il compagno sostiene con 2-3 carte.</td></tr>
+          <tr><td><strong>3♠</strong></td><td>5+ Cuori e 4 Picche</td><td>Bicolore nobile.</td></tr>
+          <tr><td><strong>3NT</strong></td><td>Bilanciata 28-30 PO</td><td>Chiusura, salvo maggior punteggio del rispondente.</td></tr>
+          <tr><td><strong>4♣ / 4<span class="suit-red">♦</span></strong></td><td>6 Cuori e 5+ nel minore</td><td>Chiede al compagno di scegliere.</td></tr>
+          <tr><td><strong>4<span class="suit-red">♥</span></strong></td><td>7+ Cuori o sesta chiusa</td><td>Chiusura.</td></tr>
+          <tr><td><strong>4NT</strong></td><td>Bilanciata 31-33 PO</td><td>Quantitativa.</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Dopo il 2NT Kokish:</strong> 3♣ = Puppet Stayman, 3<span class="suit-red">♦</span> = transfer cuori, 3<span class="suit-red">♥</span> = transfer picche, 3NT = chiusura.</p>
+    
+</section><section id="2c-dopo2h" class="chapter card" data-index="11" data-title="3.7 Risposte dell'apertore dopo 2♣ – 2♥">
+
+      <h2>3.7 Risposte dell'apertore dopo 2♣ – 2<span class="suit-red">♥</span></h2>
+      <p>Quando il compagno risponde positivamente <strong>2<span class="suit-red">♥</span></strong> (2 mezzi controlli), ecco lo schema dei rialzi dell'apertore:</p>
+      <table>
+        <thead>
+          <tr><th>Rialzo</th><th>Significato</th><th>Forzante / Sviluppi</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>2NT</strong></td><td>Bilanciata 22-24 PO</td><td>Sì. Seguono transfer e Puppet come su apertura 2SA.</td></tr>
+          <tr><td><strong>2♠</strong></td><td>5+ picche, mano forte</td><td>Sì, fino a manche. 1° gradino interroga (senza 5° nobile); altro è naturale 5°+.</td></tr>
+          <tr><td><strong>3♣</strong></td><td>5+ fiori, mano forte</td><td>Sì, fino a manche. 1° gradino interroga; altro a livello 3 è naturale 5°+.</td></tr>
+          <tr><td><strong>3<span class="suit-red">♦</span></strong></td><td>5+ quadri, mano forte</td><td>Sì, fino a manche. 1° gradino interroga; 3SA mostra 5+<span class="suit-red">♥</span> (gradino occupato).</td></tr>
+          <tr><td><strong>3<span class="suit-red">♥</span></strong></td><td>5+ cuori, mano forte</td><td>1° gradino interroga (senza 5+♠); 3SA mostra 5+♠.</td></tr>
+          <tr><td><strong>3♠</strong></td><td>6+ picche (chiuse), mano forte</td><td>Fissa le atout.</td></tr>
+          <tr><td><strong>3SA</strong></td><td>Bilanciata 25-27 PO</td><td>Sì. Transfer e Puppet a livello più alto (es. 4♣ è Puppet).</td></tr>
+        </tbody>
+      </table>
+    
+</section><section id="2c-dopo2s" class="chapter card" data-index="12" data-title="3.8 Risposte dell'apertore dopo 2♣ – 2♠">
+
+      <h2>3.8 Risposte dell'apertore dopo 2♣ – 2♠</h2>
+      <p>Quando il compagno risponde <strong>2♠</strong> (3 mezzi controlli):</p>
+      <table>
+        <thead>
+          <tr><th>Rialzo</th><th>Significato</th><th>Forzante / Sviluppi</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>2NT</strong></td><td>Bilanciata 22-24 PO</td><td>Sì. Seguono transfer e Puppet come su apertura 2SA.</td></tr>
+          <tr><td><strong>3♣</strong></td><td>5+ fiori, mano forte</td><td>Sì. Relay senza quinte; 2° gradino+ = quinta; 3SA = quinta nel seme del relay.</td></tr>
+          <tr><td><strong>3<span class="suit-red">♦</span></strong></td><td>5+ quadri, mano forte</td><td>Sì. Stesso schema relay/quinte.</td></tr>
+          <tr><td><strong>3<span class="suit-red">♥</span></strong></td><td>5+ cuori, mano forte</td><td>Sì. Stesso schema relay/quinte.</td></tr>
+          <tr><td><strong>3♠</strong></td><td>5+ picche, mano forte</td><td>Naturale.</td></tr>
+          <tr><td><strong>3NT</strong></td><td>Bilanciata 25-27 PO</td><td>Sì. Seguono transfer e Puppet come su apertura 2SA.</td></tr>
+          <tr><td><strong>4♣ / 4<span class="suit-red">♦</span></strong></td><td>6 Cuori e 5+ nel minore</td><td>Chiede di scegliere.</td></tr>
+          <tr><td><strong>4<span class="suit-red">♥</span> / 4♠</strong></td><td>6+ picche (chiuse), mano forte</td><td>Chiusura/fissa atout.</td></tr>
+          <tr><td><strong>4NT</strong></td><td>Bilanciata 28-30 PO</td><td>Richiesta Assi.</td></tr>
+        </tbody>
+      </table>
+    
+</section><section id="2c-positiva" class="chapter card" data-index="13" data-title="3.9 Dopo una risposta positiva">
+
+      <h2>3.9 Dopo una risposta positiva</h2>
+      <p>Se il compagno ha mostrato 2 o più mezzi controlli, la Kokish non serve più: il compagno ha già dato valori e l'apertore descrive la mano con dichiarazioni naturali.</p>
+      <table>
+        <thead>
+          <tr><th>Rialzo</th><th>Significato</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>2NT</strong></td><td>Bilanciata 22-24 PO (<strong>forzante</strong>, perché il compagno ha già mostrato valori).</td></tr>
+          <tr><td><strong>3NT</strong></td><td>Bilanciata 25-27 PO.</td></tr>
+          <tr><td><strong>Colore a livello 2 o 3</strong></td><td>Colore naturale, forzante: il compagno sostiene con 3 carte.</td></tr>
+          <tr><td><strong>Cue-bid</strong></td><td>Controllo di primo o secondo giro nel colore dichiarato.</td></tr>
+          <tr><td><strong>4NT</strong></td><td>Bilanciata 28-30 PO, richiesta Assi.</td></tr>
+        </tbody>
+      </table>
+    
+</section><section id="2c-esempi" class="chapter card" data-index="14" data-title="3.10 Esempi guidati (2♣)">
+
+      <h2>3.10 Esempi guidati</h2>
+
+      <article class="hand-box">
+        <h3>Esempio 1 — Bilanciata di 26 punti (Kokish 2NT)</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ 9 6 4<br><span class="suit-red">♥</span> 8 7 3<br><span class="suit-red">♦</span> J 9 6 4<br>♣ 9 5 2</div>
+          <div class="seat west"><strong>OVEST</strong><br>passa</div>
+          <div class="seat center">ESEMPIO 1<br><small>Sud mazziere</small></div>
+          <div class="seat east"><strong>EST</strong><br>passa</div>
+          <div class="seat south"><strong>SUD (apre)</strong><br>♠ A K 7<br><span class="suit-red">♥</span> A Q 4<br><span class="suit-red">♦</span> K Q 5<br>♣ A K J 6</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2♣ – Nord 2<span class="suit-red">♦</span> – Sud 2<span class="suit-red">♥</span> – Nord 2♠ – Sud 2NT – Nord 3NT. Sud ha 26 PO bilanciati; Nord (0 controlli) esegue il relay obbligatorio 2♠ e sul 2NT (25-27) chiude a 3NT.</p>
+      </article>
+
+      <article class="hand-box">
+        <h3>Esempio 2 — Mano di cuori (Kokish naturale)</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ Q J 7 5 3<br><span class="suit-red">♥</span> 10 4<br><span class="suit-red">♦</span> 9 8 2<br>♣ K 9 6</div>
+          <div class="seat west"><strong>OVEST</strong><br>passa</div>
+          <div class="seat center">ESEMPIO 2<br><small>Sud mazziere</small></div>
+          <div class="seat east"><strong>EST</strong><br>passa</div>
+          <div class="seat south"><strong>SUD (apre)</strong><br>♠ A 4<br><span class="suit-red">♥</span> A K Q J 9 8<br><span class="suit-red">♦</span> K Q 5<br>♣ A 7</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2♣ – Nord 2<span class="suit-red">♦</span> – Sud 2<span class="suit-red">♥</span> – Nord 2♠ – Sud 4<span class="suit-red">♥</span> – Passo. Nord ha 1 controllo (2<span class="suit-red">♦</span>), esegue relay 2♠ e Sud chiude a 4<span class="suit-red">♥</span>.</p>
+      </article>
+
+      <article class="hand-box">
+        <h3>Esempio 3 — Bilanciata di 22 punti (2NT diretto)</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ 9 8 7 6<br><span class="suit-red">♥</span> 9 4 3<br><span class="suit-red">♦</span> 10 5 4<br>♣ 8 6 2</div>
+          <div class="seat west"><strong>OVEST</strong><br>passa</div>
+          <div class="seat center">ESEMPIO 3<br><small>Sud mazziere</small></div>
+          <div class="seat east"><strong>EST</strong><br>passa</div>
+          <div class="seat south"><strong>SUD (apre)</strong><br>♠ A K 4<br><span class="suit-red">♥</span> K J 5<br><span class="suit-red">♦</span> A Q 7<br>♣ A J 9 3</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2♣ – Nord 2<span class="suit-red">♦</span> – Sud 2NT – Tutti passano. Con 22 PO Sud dice 2NT diretto (non forzante) e Nord passa con 0 punti.</p>
+      </article>
+
+      <article class="hand-box">
+        <h3>Esempio 4 — Risposta positiva e slam</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ Q 7 4<br><span class="suit-red">♥</span> K 9 6 5<br><span class="suit-red">♦</span> K 8 3<br>♣ 7 3 2</div>
+          <div class="seat west"><strong>OVEST</strong><br>passa</div>
+          <div class="seat center">ESEMPIO 4<br><small>Sud mazziere</small></div>
+          <div class="seat east"><strong>EST</strong><br>passa</div>
+          <div class="seat south"><strong>SUD (apre)</strong><br>♠ A K J 10 8 6<br><span class="suit-red">♥</span> A Q<br><span class="suit-red">♦</span> A 5<br>♣ K Q 4</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2♣ – Nord 2<span class="suit-red">♥</span> – Sud 2♠ – Nord 3♠ – Sud 4NT – Nord 5<span class="suit-red">♦</span> – Sud 6♠. Nord ha due Re (2 controlli → 2<span class="suit-red">♥</span>); 5<span class="suit-red">♦</span> (RKCB 1430) mostra 0 carte chiave e Sud chiama 6♠.</p>
+      </article>
+
+      <article class="hand-box">
+        <h3>Esempio 5 — Secondo negativo del rispondente</h3>
+        <div class="diagram">
+          <div class="seat north"><strong>NORD</strong><br>♠ 7 5<br><span class="suit-red">♥</span> 10 6 4 2<br><span class="suit-red">♦</span> 9 8 7 2<br>♣ 9 6 5</div>
+          <div class="seat west"><strong>OVEST</strong><br>passa</div>
+          <div class="seat center">ESEMPIO 5<br><small>Sud mazziere</small></div>
+          <div class="seat east"><strong>EST</strong><br>passa</div>
+          <div class="seat south"><strong>SUD (apre)</strong><br>♠ A K J 10 9 8<br><span class="suit-red">♥</span> A Q<br><span class="suit-red">♦</span> K Q 5<br>♣ A 7</div>
+        </div>
+        <p><strong>Licita:</strong> Sud 2♣ – Nord 2<span class="suit-red">♦</span> – Sud 2♠ – Nord 3♣ – Sud 3♠ – Tutti passano. Nord con 0 PO dichiara 3♣ (secondo negativo) e passa sul 3♠ di Sud.</p>
+      </article>
+    
+</section><section id="2c-esercizi" class="chapter card" data-index="15" data-title="3.11 Esercizi pratici (2♣)">
+
+      <h2>3.11 Esercizi pratici</h2>
+      <p>Contate i mezzi controlli (Asso = 2, Re = 1) e scegliete la risposta al 2♣ del compagno. Cliccate sul pulsante per verificare.</p>
+      <div class="quiz-item">
+        <p><strong>1.</strong> ♠ K 8 5 <span class="suit-red">♥</span> Q J 7 4 <span class="suit-red">♦</span> 9 6 2 ♣ J 8 3</p>
+        <button class="toggle-sol">Mostra / Nascondi Soluzione</button>
+        <p class="solution hidden"><strong>2<span class="suit-red">♦</span></strong> — Un solo Re (K♠): 1 mezzo controllo.</p>
+      </div>
+      <div class="quiz-item">
+        <p><strong>2.</strong> ♠ A 7 3 <span class="suit-red">♥</span> 9 5 4 <span class="suit-red">♦</span> K 8 6 2 ♣ J 10 7</p>
+        <button class="toggle-sol">Mostra / Nascondi Soluzione</button>
+        <p class="solution hidden"><strong>2♠</strong> — A♠ (2) + K<span class="suit-red">♦</span> (1) = 3 mezzi controlli.</p>
+      </div>
+      <div class="quiz-item">
+        <p><strong>3.</strong> ♠ K 9 2 <span class="suit-red">♥</span> K Q 7 5 <span class="suit-red">♦</span> K 10 4 ♣ A 6 3</p>
+        <button class="toggle-sol">Mostra / Nascondi Soluzione</button>
+        <p class="solution hidden"><strong>3♣</strong> — K♠ + K<span class="suit-red">♥</span> + K<span class="suit-red">♦</span> (3) + A♣ (2) = 5 mezzi controlli.</p>
+      </div>
+      <div class="quiz-item">
+        <p><strong>4.</strong> ♠ Q J 10 9 8 <span class="suit-red">♥</span> J 9 7 <span class="suit-red">♦</span> Q 8 ♣ 10 7 5</p>
+        <button class="toggle-sol">Mostra / Nascondi Soluzione</button>
+        <p class="solution hidden"><strong>2<span class="suit-red">♦</span></strong> — Nessun Asso né Re: 0 mezzi controlli (nonostante 6 PO).</p>
+      </div>
+      <div class="quiz-item">
+        <p><strong>5.</strong> ♠ A K 6 <span class="suit-red">♥</span> A J 5 <span class="suit-red">♦</span> 10 7 4 3 ♣ 8 6 2</p>
+        <button class="toggle-sol">Mostra / Nascondi Soluzione</button>
+        <p class="solution hidden"><strong>3♣</strong> — A♠ (2) + K♠ (1) + A<span class="suit-red">♥</span> (2) = 5 mezzi controlli.</p>
+      </div>
+    
+</section><section id="2c-riepilogo" class="chapter card" data-index="16" data-title="3.12 Riepilogo operativo & Errori frequenti">
+
+      <h2>3.12 Riepilogo operativo & Errori frequenti</h2>
+      <h3>Cose da ricordare</h3>
+      <ol>
+        <li><strong>2♣</strong> = mano fortissima (22+ PO o meno di 4 perdenti), forzante per un giro.</li>
+        <li><strong>Asso = 2</strong> mezzi controlli, <strong>Re = 1</strong>; la Dama non conta.</li>
+        <li><strong>2<span class="suit-red">♦</span></strong> = 0-1 mezzi controlli; le risposte positive mostrano 2, 3, 4, 5, 6+ mezzi controlli.</li>
+        <li>Dopo 2<span class="suit-red">♦</span>: <strong>2NT</strong> = 22-24 non forzante; <strong>2<span class="suit-red">♥</span></strong> = Kokish; <strong>2♠/3♣/3<span class="suit-red">♦</span></strong> = colore naturale.</li>
+        <li><strong>Kokish:</strong> 2<span class="suit-red">♥</span> → 2♠ obbligato → <strong>2NT</strong> (25-27 PO forzante) oppure 3<span class="suit-red">♥</span> (cuori) o altro colore; <strong>3NT</strong> = 28-30 PO.</li>
+        <li>Il 2NT diretto (22-24 non forzante) e il 2NT dopo la Kokish (25-27 forzante) hanno forza diversa: <strong>non confonderli</strong>.</li>
+      </ol>
+      <h3>Errori frequenti da evitare</h3>
+      <ul>
+        <li>Rispondere positivo contando i punti onori invece dei mezzi controlli.</li>
+        <li>Dimenticare il relay obbligatorio 2♠ dopo il 2<span class="suit-red">♥</span> Kokish, o rispondere con altro.</li>
+        <li>Usare la Kokish con 22-24 bilanciati (si dice 2NT diretto).</li>
+        <li>Passare sul 2NT dopo la Kokish: è <strong>forzante a manche</strong>.</li>
+      </ul>
+    
+</section>
+
+      <nav class="chapter-nav" aria-label="Navigazione capitoli">
+        <button id="prevBtn" class="nav-btn" disabled>← Precedente</button>
+        <span id="chapterTitle" class="chapter-label">1. Introduzione</span>
+        <button id="nextBtn" class="nav-btn">Successivo →</button>
+      </nav>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
