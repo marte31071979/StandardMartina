@@ -1,4 +1,4 @@
-const CACHE_NAME = 'standard-martina-v5';
+const CACHE_NAME = 'standard-martina-v1';
 const ASSETS = [
   './',
   './index.html',
